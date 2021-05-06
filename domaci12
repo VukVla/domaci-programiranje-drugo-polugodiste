@@ -1,0 +1,59 @@
+//nesto se pokarabasilo pa moram ovako
+//ovo sa listama nisam 
+#include <iostream>
+#include "list.hpp"
+#include "dinstring.hpp"
+
+using namespace std;
+
+class Artikal
+{
+    virtual double Virt() = 0;
+};
+
+class Lek : public Arktikal
+{
+private:
+    long int jkl;
+    DinString naziv;
+    double jedinicnaCena;
+    int kolicina;
+public:
+    Lek()
+    {
+        jkl = 0;
+        naziv = "paracetamol";
+        jedinicnaCena = 400;
+        kolicina = 50;
+    }
+    Lek(long int jjkl, DinString& nnaziv, double jjedinicnaCena, int kkolicina)
+    {
+        jkl = jjkl;
+        naziv = nnaziv;
+        jedinicnaCena = jedinicnaCena;
+        kolicina = kkolicina;
+    }
+    Lek(Lek& LLek)
+    {
+        jkl = LLek.jkl;
+        naziv = LLek.naziv;
+        jedinicna = LLek.jedinicnaCena;
+        kolicina = LLek.kolicina;
+    }
+    double Virt()
+    {
+        return jedinicnaCena * kolicina;
+    }
+    friend ostream& operator<< (ostream& out, const Lek& LLek)
+    {
+        out << jkl << naziv << jedinicnaCena << kolicina << end;
+        return out;
+    }
+};
+
+int main()
+{
+    Lek brufen;
+    cout << brufen << end;
+    return 0;
+}
